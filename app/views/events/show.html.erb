@@ -1,0 +1,46 @@
+<h1>Event Details</h1>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value %>
+<% end %>
+
+<h4>
+  Name: <%= @event.title %>
+</h4>
+
+<p>
+  Description: <%= @event.description %>
+</p>
+
+<p>
+  Event Date: <%= @event.event_date %>
+</p>
+
+<p>
+  Registrations: <%= @event.registrations %>
+</p>
+
+<p>
+  Activities: <%= @event.activities %>
+</p>
+
+<p>Event Comments:</p>
+<ul>
+  <% @event.comments.each do |comment| %>
+    <li>
+      <%= comment.content %>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to 'Edit Event', edit_event_path(@event) %>
+
+<br>
+
+<%= link_to 'Delete Event', @event, method: :delete, data: { confirm: "Are you sure?" } %>
+
+<br>
+
+<%= link_to 'View All Events', events_path %>

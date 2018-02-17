@@ -1,0 +1,45 @@
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@event.errors.count, 'error') %> 
+      prevented the form from being saved.
+    </h2>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @event do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
+
+  <%= f.label :event_date %>
+  <%= f.datetime_select :event_date %><br>
+
+  <%= f.label :registrations %>
+  <%= f.number_field :registrations %><br>
+
+  <%= f.label :activities %>
+  <%= f.number_field :activities %><br>
+
+  <%= f.collection_check_boxes :comment_ids, Comment.all, :id, :content do |part| %>
+    <div>
+      <%= part.check_box %> <%= part.object.upcase_content %>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :comments, @event.comments.build do |comment_fields| %>
+    <%= comment_fields.label :content %>
+    <%= comment_fields.text_area :content %><br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
