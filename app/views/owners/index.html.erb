@@ -1,0 +1,27 @@
+<h1>All Owners</h1>
+
+<%= render partial: 'selection', locals: { selection_number: @number } %>
+
+<ul>
+  <% @owners.each do |owner| %>
+    <li>
+      <%= link_to owner.name, owner_path(owner) %> -- currently owns <%= owner.vehicles.size %> vehicles.
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to 'Create a New Owner with 1 vehicle', new_owner_path %>
+
+<br>
+
+<%= link_to 'Create a New Owner with 2 vehicles', new_owner_number_path(2) %>
+
+<br>
+
+<%= link_to 'Create a New Owner with 3 vehicles', new_owner_number_path(3) %>
+
+<br>
+
+<%= link_to 'Create a New Owner with 4 vehicles', new_owner_number_path(4) %>

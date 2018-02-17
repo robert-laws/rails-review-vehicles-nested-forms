@@ -1,0 +1,39 @@
+<% if @owner.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@owner.errors.count, 'error') %> 
+      prevented this record from being saved.
+    </h2>
+    <ul>
+      <% @owner.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@owner) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :age %>
+  <%= f.number_field :age %><br>
+
+  <%= f.label :experience %>
+  <%= f.number_field :experience %><br>
+
+  <%= f.fields_for(:vehicles) do |vehicle_field| %>
+    <%= vehicle_field.label :name %>
+    <%= vehicle_field.text_field :name %><br>
+    <%= vehicle_field.label :model %>
+    <%= vehicle_field.text_field :model %><br>
+    <%= vehicle_field.label :model_year %>
+    <%= vehicle_field.number_field :model_year %><br>
+    <%= vehicle_field.label :pass_safety_test %>
+    <%= vehicle_field.check_box :pass_safety_test %><br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

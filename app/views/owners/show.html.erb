@@ -1,0 +1,43 @@
+<h1>Owner Details</h1>
+
+<% flash.each do |name, message| %>
+  <%= content_tag :div, message %>
+<% end %>
+
+<p>
+  <strong>Name:</strong> <%= @owner.name %>
+</p>
+
+<p>
+  Age: <%= @owner.age %>
+</p>
+
+<p>
+  Experience: <%= @owner.experience %>
+</p>
+
+<p>Vehicle Information:</p>
+
+<ul>
+  <% @owner.vehicles.each do |vehicle| %>
+    <li>
+      <strong>Name:</strong> <%= vehicle.name %><br>
+      <strong>Model:</strong> <%= vehicle.model %><br>
+      <strong>Year:</strong> <%= vehicle.model_year %><br>
+      <strong>Safety Test Passed:</strong> <%= vehicle.pass_safety_test %>
+    </li>
+    <br>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to 'Edit Owner', edit_owner_path(@owner) %>
+
+<br>
+
+<%= link_to 'Delete Owner', @owner, method: :delete, data: { confirm: "Are you sure?" } %>
+
+<br>
+
+<%= link_to 'View All Owners', owners_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  model: MyString
+  model_year: 1
+  pass_safety_test: false
+  owner: one
+
+two:
+  name: MyString
+  model: MyString
+  model_year: 1
+  pass_safety_test: false
+  owner: two
