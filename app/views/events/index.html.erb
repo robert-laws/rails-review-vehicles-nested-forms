@@ -1,9 +1,12 @@
+<% title "Welcome - All Authors" %>
+<% current_time %>
+
 <h1>All Events</h1>
 
 <ul>
   <% @events.each do |event| %>
     <li>
-      <%= link_to event.title, event_path(event) %>
+      <%= link_to event.title, event_path(event) %> -- Event Date: <%= event_date_time event %>
     </li>
   <% end %>
 </ul>
@@ -11,3 +14,5 @@
 <hr>
 
 <%= link_to 'Create a New Event', new_event_path %>
+
+<hr>
