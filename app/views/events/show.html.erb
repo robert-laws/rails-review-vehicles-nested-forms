@@ -30,7 +30,7 @@
 <ul>
   <% @event.comments.each do |comment| %>
     <li>
-      <%= comment.content %>
+      <%= comment.content %> -- <%= create_time comment %>
     </li>
   <% end %>
 </ul>
