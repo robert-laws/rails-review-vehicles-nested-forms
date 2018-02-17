@@ -1,5 +1,5 @@
 class Owner < ApplicationRecord
-  has_many :vehicles
+  has_many :vehicles, dependent: :destroy
 
   accepts_nested_attributes_for :vehicles
 
