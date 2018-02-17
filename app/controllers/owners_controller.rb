@@ -26,6 +26,7 @@ class OwnersController < ApplicationController
 
   def edit
     @owner = Owner.find(params[:id])
+    @vehicles = @owner.vehicles
   end
 
   def update
@@ -45,6 +46,6 @@ class OwnersController < ApplicationController
   private
 
   def owner_params
-    params.require(:owner).permit(:name, :age, :experience, vehicles_attributes: [:name, :model, :model_year, :pass_safety_test])
+    params.require(:owner).permit(:name, :age, :experience, vehicles_attributes: [:id, :name, :model, :model_year, :pass_safety_test])
   end
 end
