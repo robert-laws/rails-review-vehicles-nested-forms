@@ -10,8 +10,9 @@ class OwnersController < ApplicationController
 
   def new
     @owner = Owner.new
-    number_param = params[:number].to_i
-    number = number_param == 0 ? 1 : number_param
+    number = params["number_choice"].to_i
+    # number_param = params[:number].to_i
+    # number = number_param == 0 ? 1 : number_param
     @vehicles = number.times { @owner.vehicles.build }
   end
 

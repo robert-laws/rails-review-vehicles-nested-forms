@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :owners
-  get 'owners/new/:number', to: 'owners#new', as: 'new_owner_number'
+  # get 'owners/new/:number', to: 'owners#new', as: 'new'
+
+  resources :vehicles, only: [:index, :show]
 
   # resources :events
 

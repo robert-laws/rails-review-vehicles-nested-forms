@@ -1,0 +1,25 @@
+<h1>Vehicle Details</h1>
+
+<h4>
+  Name: <%= @vehicle.name %>
+</h4>
+
+<p>
+  Owner: <%= @vehicle.owner.name %>
+</p>
+
+<p>
+  Model: <%= @vehicle.model %>
+</p>
+
+<p>
+  Model Year: <%= @vehicle.model_year %>
+</p>
+
+<p>
+  Passed Safety Test: <%= @vehicle.pass_safety_test %>
+</p>
+
+<hr>
+
+<%= link_to 'View all Vehicles', vehicles_path %>
