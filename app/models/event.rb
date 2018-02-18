@@ -4,6 +4,24 @@ class Event < ApplicationRecord
 
   validates :title, presence: true
 
+  def self.from_today
+    where("created_at >= ?", Time.zone.today.beginning_of_day)
+  end
+
+  def self.old_news
+    where("created_at < ?", Time.zone.today.beginning_of_day)
+  end
+
+  def self.registrations_threshold(limit)
+    if limit == "Less than Twenty-Five"
+      where("registrations < ?", 25)
+    elsif limit == "Twenty-Five to Fifty"
+      where("registrations >= ? AND registrations < ?", 25, 50)
+    else
+      where("registrations > ?", 50)
+    end
+  end
+
   accepts_nested_attributes_for :comments
 
   def comments_attributes=(comment_attributes)

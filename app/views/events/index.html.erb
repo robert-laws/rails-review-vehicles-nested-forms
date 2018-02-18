@@ -1,18 +1,11 @@
 <% title "Welcome - All Authors" %>
 <% current_time %>
 
-<% if !params[:event_time].blank? %>
-  <% if params[:event_time] == "Morning" %>
-    <% @events = Event.where("created_at >= ?", Time.zone.today.beginning_of_day) %>
-  <% else %>
-    <% @events = Event.where("created_at < ?", Time.zone.today.beginning_of_day) %>
-  <% end %>
-<% end %>
-
 <h1>All Events</h1>
 
 <%= form_tag("events", method: "get") do %>
   <%= select_tag :event_time, options_for_select(["Today", "Older Time"]), include_blank: true %>
+  <%= select_tag :registrations, options_for_select(["Less than Twenty-Five", "Twenty-Five to Fifty", "More than Fifty"]), include_blank: true %>
   <%= submit_tag "Filter" %>
 <% end %>
 

@@ -1,13 +1,9 @@
 <h1>All Vehicles</h1>
 
-<% if !params[:owner].blank? %>
-  <% @vehicles = Vehicle.where(owner: params[:owner])%>
-<% end %>
-
 <div>
   <h3>Filter Vehicles</h3>
   <%= form_tag('/vehicles', method: 'get') do %>
-    <%= select_tag 'owner', options_from_collection_for_select(Owner.all, 'id', 'name'), include_blank: true %>
+    <%= select_tag 'owner', options_from_collection_for_select(@owners, 'id', 'name'), include_blank: true %>
     <%= submit_tag 'Filter'%>
   <% end %>
 </div>

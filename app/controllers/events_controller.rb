@@ -1,6 +1,17 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+
+    if !params[:event_time].blank?
+      if params[:event_time] == "Today"
+        @events = Event.from_today
+      else
+        @events = Event.old_news
+      end
+    elsif params[:registrations].present?
+      @events = Event.registrations_threshold(params[:registrations])
+    else
+      @events = Event.all
+    end
   end
 
   def show
